@@ -14,7 +14,7 @@ def parse_rew(path):
 cmd_rec = 'python recorder.py'
 cmd_play = 'python player.py'
 # cmd_rec = 'recorder'
-# cmd_rec = 'player'
+# cmd_play = 'player'
 eq_left = parse_rew('left.txt')
 eq_right = parse_rew('right.txt')
 cmd = (
