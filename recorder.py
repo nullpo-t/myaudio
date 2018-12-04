@@ -19,7 +19,7 @@ while stream.is_active():
     buffer = stream.read(buf_size)
     if len(buffer) == 0:
         break
-    sys.stdout.buffer.write(buf_size)
+    sys.stdout.buffer.write(buffer)
 stream.stop_stream()
 stream.close()
 pa.terminate()
