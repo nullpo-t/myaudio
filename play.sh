@@ -2,7 +2,7 @@
 
 set -x
 
-trap 'echo trapped; kill -9 $(jobs -p); rm -f $L1 $L2 $R1 $R2' 1 2 3 15 EXIT; \
+trap 'echo trapped; killall -9 sox; rm -f $L1 $L2 $R1 $R2' 1 2 3 15 EXIT; \
 L1=$(mktemp -u); R1=$(mktemp -u); L2=$(mktemp -u); R2=$(mktemp -u); \
 mkfifo $L1 $L2 $R1 $R2; \
 sox -t raw -b 16 -e signed -c 2 -r 48000 $L1 \
