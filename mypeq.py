@@ -11,14 +11,14 @@ def parse_rew(path):
     return ' '.join(sox_eq)
 
 # cmd_rec = '< music.raw'
-cmd_rec = 'python recorder.py'
-cmd_play = 'python player.py'
-# cmd_rec = 'recorder'
-# cmd_play = 'player'
+cmd_rec = 'python ./recorder.py'
+cmd_play = 'python ./player.py'
+# cmd_rec = 'myaudio-recorder'
+# cmd_play = 'myaudio-player'
 eq_left = parse_rew('left.txt')
 eq_right = parse_rew('right.txt')
 cmd = (
-    "trap 'echo trapped; kill -9 $(jobs -p); kill $!; rm -f $L1 $L2 $R1 $R2' 1 2 3 15 EXIT;"
+    "trap 'echo trapped; killall -9 sox; kill $!; rm -f $L1 $L2 $R1 $R2' 1 2 3 15 EXIT;"
     "L1=$(mktemp -u); R1=$(mktemp -u); L2=$(mktemp -u); R2=$(mktemp -u);"
     "mkfifo $L1 $L2 $R1 $R2;"
     "sox -t raw -b 16 -e signed -c 2 -r 48000 $L1"
